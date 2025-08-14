@@ -2097,20 +2097,12 @@ export default function SiddanInfraWebsite() {
       )}
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
+      <footer className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "#0d93b4" }}
-                >
-                  <span className="text-white font-bold text-lg">S</span>
-                </div>
-                <span className="text-2xl font-bold">Siddan Infra</span>
-              </div>
-              <p className="text-gray-300 leading-relaxed max-w-md">
+              <img src="https://i.ibb.co/nqXLCD0V/New-Project-13.png" alt="Siddan Infra Logo" className="h-14 mb-4" />
+              <p className="text-black-900 leading-relaxed max-w-md">
                 Transforming visions into reality through innovative infrastructure development and interior design
                 solutions.
               </p>
@@ -2118,7 +2110,7 @@ export default function SiddanInfraWebsite() {
 
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-900">
                 <li>Infrastructure Development</li>
                 <li>Interior Design</li>
                 <li>Project Management</li>
@@ -2128,7 +2120,7 @@ export default function SiddanInfraWebsite() {
 
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-900">
                 <li>+1 483 944 954</li>
                 <li>info@siddaninfra.com</li>
                 <li>Milwaukee, WI</li>
@@ -2136,7 +2128,7 @@ export default function SiddanInfraWebsite() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
             <p>&copy; 2024 Siddan Infra. All rights reserved.</p>
           </div>
         </div>
