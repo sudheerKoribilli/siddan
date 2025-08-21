@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Siddan Infra - Infrastructure & Interior Design",
   description:
     "Elevating Spaces, Crafting Dreams. We specialize in transforming visions into reality through innovative infrastructure and interior design solutions.",
+  icons: {
+    icon: "https://i.ibb.co/0p3Gwr1K/New-Project-25.png", // ✅ points to your public/siddhan-logo.png
+  },
 }
 
 export default function RootLayout({
