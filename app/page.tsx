@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, ChevronDown, Menu, X, Phone, Mail, MapPin, Minus, Plus, Star } from "lucide-react"
+import { ArrowRight, ChevronDown, Menu, X, Phone,MessageCircle, Mail, MapPin, Minus, Plus, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-export default function SiddanInfraWebsite() {
+
+export default function siddhanInfraWebsite() {
   const [currentPage, setCurrentPage] = useState("interiors")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isNavVisible, setIsNavVisible] = useState(true)
@@ -43,19 +44,19 @@ export default function SiddanInfraWebsite() {
   const testimonials = [
     {
       quote:
-        "Siddan Infrastructure transformed our commercial complex beyond our expectations. Their expertise in both construction and interior design created a space that perfectly balances functionality with aesthetic appeal.",
+        "siddhan Infrastructure transformed our commercial complex beyond our expectations. Their expertise in both construction and interior design created a space that perfectly balances functionality with aesthetic appeal.",
       name: "Rajesh Sharma",
       position: "CEO, Sharma Enterprises",
     },
     {
       quote:
-        "Working with Siddan Infra on our residential project was exceptional. They delivered quality construction with attention to every detail, completing the project on time and within budget.",
+        "Working with siddhan Infra on our residential project was exceptional. They delivered quality construction with attention to every detail, completing the project on time and within budget.",
       name: "Priya Patel",
       position: "Homeowner",
     },
     {
       quote:
-        "The interior design team at Siddan created a workspace that has significantly improved our team's productivity. Their understanding of modern office dynamics is remarkable.",
+        "The interior design team at siddhan created a workspace that has significantly improved our team's productivity. Their understanding of modern office dynamics is remarkable.",
       name: "Michael Johnson",
       position: "Operations Director, TechCorp",
     },
@@ -137,10 +138,10 @@ export default function SiddanInfraWebsite() {
             <div className="absolute left-1/2 transform -translate-x-1/2">
               <button onClick={() => handlePageChange("interiors")}>
                 <Image
-                  src="https://i.ibb.co/nqXLCD0V/New-Project-13.png"
+                  src="https://i.ibb.co/SXJR3BTf/Untitled-1.png"
                   alt="Siddhan Infrastructure"
                   width={160}
-                  height={48}
+                  height={45}
                   className="w-60 h-13 hover:opacity-80 transition-opacity"
                 />
               </button>
@@ -215,57 +216,107 @@ export default function SiddanInfraWebsite() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
-                    <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]">
-                      <option>Select project type</option>
-                      <option>Construction</option>
-                      <option>Interior Design</option>
-                      <option>Both Construction & Interiors</option>
-                      <option>Consultation</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-                      placeholder="Tell us about your project..."
-                    ></textarea>
-                  </div>
-                  <Button className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium">
-                    Send Message
-                  </Button>
-                </form>
-              </div>
+             {/* Contact Form */}
+             <div className="bg-white rounded-2xl p-8 shadow-lg">
+  <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+  <form
+    className="space-y-6"
+    onSubmit={async (e) => {
+      e.preventDefault();
+
+      const form = e.target as HTMLFormElement;
+
+      const data = {
+        name: (form.elements.namedItem("name") as HTMLInputElement).value,
+        email: (form.elements.namedItem("email") as HTMLInputElement).value,
+        phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+        projectType: (form.elements.namedItem("projectType") as HTMLSelectElement).value,
+        message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      };
+
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbz3xPtVqK4v6LpwRHl_6Fcwgo0StiliXFKTND892O_YL4Ikt2YnyIZRy0vXR4VM1FKR/exec", // 🔗 Replace with your deployed Google Script Web App URL
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" },
+            mode: "no-cors", // 👈 Important to bypass CORS restriction
+          }
+        );
+
+        // Since mode: "no-cors" doesn’t return JSON, we just show success directly
+        alert("✅ Message sent successfully!");
+        form.reset();
+      } catch (error) {
+        console.error("Error:", error);
+        alert("❌ Failed to send message. Please try again.");
+      }
+    }}
+  >
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+      <input
+        type="text"
+        name="name"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+        placeholder="Your full name"
+        required
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+      <input
+        type="email"
+        name="email"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+        placeholder="your.email@example.com"
+        required
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+      <input
+        type="tel"
+        name="phone"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+        placeholder="94948 41613"
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+      <select
+        name="projectType"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+        required
+      >
+        <option value="">Select project type</option>
+        <option>Construction</option>
+        <option>Interior Design</option>
+        <option>Both Construction & Interiors</option>
+        <option>Sales</option>
+        <option>Consultation</option>
+      </select>
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+      <textarea
+        rows={4}
+        name="message"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+        placeholder="Tell us about your project..."
+      ></textarea>
+    </div>
+    <Button
+      type="submit"
+      className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium"
+    >
+      Send Message
+    </Button>
+  </form>
+</div>
+
+
 
               {/* Contact Information */}
               <div className="space-y-8">
@@ -278,7 +329,9 @@ export default function SiddanInfraWebsite() {
                       </div>
                       <div>
                         <p className="font-medium text-gray-900">Phone</p>
-                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                        <p className="text-gray-600">+91 94948 41613</p>
+                        <p className="text-gray-600">+91 99088 08958</p>
+
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
@@ -287,7 +340,7 @@ export default function SiddanInfraWebsite() {
                       </div>
                       <div>
                         <p className="font-medium text-gray-900">Email</p>
-                        <p className="text-gray-600">info@siddhaninfra.com</p>
+                        <p className="text-gray-600">siddhaninfrastructures682@gmail.com</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
@@ -295,18 +348,37 @@ export default function SiddanInfraWebsite() {
                         <MapPin className="w-5 h-5 text-[#0d93b4]" />
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">Address</p>
+                        <p className="font-medium text-gray-900">Address 1</p>
                         <p className="text-gray-600">
-                          123 Business District
+                        H.No.3-8/36 ,  
                           <br />
-                          Mumbai, Maharashtra 400001
+                          Rajiv Gandhi Nagar, 
+                          <br />
+                          bachupally, medchal, 
+                          <br />
+
+                          Hyderabad-500090
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Address2</p>
+                        
+                        <p className="text-gray-600">
+                          The Gardeniya building 1st floor,
+                          <br />
+                          Akshay park,
+                          <br />
+                          near Bharat petroleum,
+                          <br />
+
+                          GOKUL ROAD HUBLI - 580020
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                {/* <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Business Hours</h3>
                   <div className="space-y-2 text-gray-600">
                     <div className="flex justify-between">
@@ -322,9 +394,9 @@ export default function SiddanInfraWebsite() {
                       <span>Closed</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="bg-blue-50 rounded-2xl p-8">
+                {/* <div className="bg-blue-50 rounded-2xl p-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Book an Appointment</h3>
                   <p className="text-gray-600 mb-6">
                     Schedule a consultation to discuss your project requirements in detail.
@@ -332,7 +404,7 @@ export default function SiddanInfraWebsite() {
                   <Button className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium">
                     Schedule Consultation
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -1031,7 +1103,7 @@ export default function SiddanInfraWebsite() {
                     </div>
                     <div className="flex items-center gap-4">
                       <Mail className="w-6 h-6 text-teal-700" />
-                      <span className="text-lg text-gray-700">info@siddaninfra.com</span>
+                      <span className="text-lg text-gray-700">siddhaninfrastructures682@gmail.com</span>
                     </div>
                     <div className="flex items-center gap-4">
                       <MapPin className="w-6 h-6 text-teal-700" />
@@ -1140,26 +1212,26 @@ export default function SiddanInfraWebsite() {
                     ABOUT OUR CONSTRUCTION DIVISION
                   </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    25+ Years of
+                    7+ Years of
                     <br />
                     <span style={{ color: "#0d93b4" }}>Construction Excellence</span>
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    Since 1999, Siddan Infra has been at the forefront of construction innovation, delivering projects
+                    Since 1999, siddhan Infra has been at the forefront of construction innovation, delivering projects
                     that exceed expectations and set new industry standards.
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
-                      <span className="text-gray-700">500+ Projects Completed Successfully</span>
+                      <span className="text-gray-700">15+ Projects Completed Successfully</span>
                     </div>
-                    <div className="flex items-center gap-3">
+                    {/* <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
                       <span className="text-gray-700">ISO 9001:2015 Certified Quality Management</span>
-                    </div>
+                    </div> */}
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
-                      <span className="text-gray-700">Green Building & Sustainable Construction</span>
+                      <span className="text-gray-700">Project Management & Sustainable Construction</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
@@ -1188,7 +1260,7 @@ export default function SiddanInfraWebsite() {
                     className="absolute -bottom-6 -right-6 text-white p-6 rounded-2xl shadow-xl"
                     style={{ backgroundColor: "#0d93b4" }}
                   >
-                    <div className="text-3xl font-bold">500+</div>
+                    <div className="text-3xl font-bold">15+</div>
                     <div className="text-sm opacity-90">Projects Delivered</div>
                   </div>
                 </motion.div>
@@ -1237,11 +1309,18 @@ export default function SiddanInfraWebsite() {
                     features: ["Luxury Homes", "Apartments", "Gated Communities", "Townhouses"],
                   },
                   {
-                    title: "Infrastructure Projects",
-                    description: "Roads, bridges, utilities, and public infrastructure that connects communities.",
+                    title: "Material Contract",
+                    description: "Supplying and managing high-quality construction materials to ensure durability, safety, and cost efficiency.",
                     image: "/infrastructure-construction.png",
-                    features: ["Road Construction", "Bridge Building", "Utilities", "Public Works"],
+                    features: [
+                      "Cement & Concrete Supply",
+                      "Structural Steel & Rebars",
+                      "Sand, Gravel & Aggregates",
+                      "Bricks, Blocks & Tiles",
+                      
+                    ],
                   },
+                  
                   {
                     title: "Renovation & Remodeling",
                     description: "Transform existing spaces with our expert renovation and modernization services.",
@@ -1256,12 +1335,17 @@ export default function SiddanInfraWebsite() {
                     features: ["Timeline Management", "Quality Control", "Budget Oversight", "Risk Management"],
                   },
                   {
-                    title: "Green Construction",
-                    description:
-                      "Sustainable building practices and eco-friendly construction solutions for the future.",
+                    title: "Sales Apartments",
+                    description: "Modern residential apartments designed for comfort, convenience, and contemporary living.",
                     image: "/green-sustainable-building.png",
-                    features: ["LEED Certification", "Solar Integration", "Energy Efficiency", "Sustainable Materials"],
+                    features: [
+                      "1 BHK Units",
+                      "2 BHK Units",
+                      "3 BHK Units",
+                      "Luxury & Penthouse Apartments"
+                    ],
                   },
+                  
                 ].map((service, index) => (
                   <motion.div
                     key={index}
@@ -1406,9 +1490,9 @@ export default function SiddanInfraWebsite() {
                 className="grid md:grid-cols-4 gap-8 bg-[#0d93b4] rounded-2xl p-8 text-white"
               >
                 {[
-                  { number: "500+", label: "Projects Completed" },
-                  { number: "$2.5B+", label: "Total Project Value" },
-                  { number: "25+", label: "Years Experience" },
+                  { number: "15+", label: "Projects Completed" },
+                  { number: "₹5cr+", label: "Total Project Value" },
+                  { number: "7+", label: "Years Experience" },
                   { number: "98%", label: "Client Satisfaction" },
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
@@ -1600,11 +1684,11 @@ export default function SiddanInfraWebsite() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">
+                  <div className="text-sm font-semibold  mb-4 tracking-wider">
                     ABOUT OUR INTERIOR DESIGN DIVISION
                   </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    Award-Winning
+                    
                     <br />
                     <span className="text-[#0d93b4]">Interior Design</span>
                   </h2>
@@ -1615,11 +1699,11 @@ export default function SiddanInfraWebsite() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700">1000+ Interior Projects Completed</span>
+                      <span className="text-gray-700">150+ Interior Projects Completed</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700">Best Interior Design Firm 2024</span>
+                      <span className="text-gray-700"> Interior Design from 2020</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
@@ -1649,7 +1733,7 @@ export default function SiddanInfraWebsite() {
                     />
                   </div>
                   <div className="absolute -bottom-6 -right-6 bg-[#0d93b4] text-white p-6 rounded-2xl shadow-xl">
-                    <div className="text-3xl font-bold">1000+</div>
+                    <div className="text-3xl font-bold">150+</div>
                     <div className="text-sm opacity-90">Designs Created</div>
                   </div>
                 </motion.div>
@@ -1909,9 +1993,9 @@ export default function SiddanInfraWebsite() {
                 className="grid md:grid-cols-4 gap-8 bg-[#0d93b4] rounded-2xl p-8 text-white mt-16"
               >
                 {[
-                  { number: "1000+", label: "Interior Projects" },
-                  { number: "15+", label: "Design Awards" },
-                  { number: "20+", label: "Years Experience" },
+                  { number: "150+", label: "Interior Projects" },
+                  { number: "10+", label: "services" },
+                  { number: "5+", label: "Years Experience" },
                   { number: "99%", label: "Client Satisfaction" },
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
@@ -2009,26 +2093,27 @@ export default function SiddanInfraWebsite() {
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   {
-                    name: "Sarah Johnson",
-                    role: "Homeowner",
+                    name: "Vamshi Raju",
+                    role: "8464950950",
                     quote:
-                      "Siddan Infra transformed our house into a dream home. Their attention to detail and understanding of our lifestyle was exceptional.",
+                      "I recently got my home interiors done by SIDDHAN INTERIORS and I am extremely happy with the results. From the very beginning, the team was professional, patient, and attentive to my ideas. They suggested modern yet practical designs that suited my budget and lifestyle.",
                     rating: 5,
                     image: "/placeholder.svg?key=client1",
                   },
                   {
-                    name: "Michael Chen",
-                    role: "Restaurant Owner",
+                    name: "Pawan",
+                    role: "7658925094",
+                    
                     quote:
-                      "The interior design for our restaurant exceeded all expectations. The space is both beautiful and functional for our operations.",
+                      "The workmanship is excellent — the wardrobes, modular kitchen, and false ceiling all look very premium. They also made sure the space was functional, not just beautiful. What impressed us most was their after-service support, always available for small adjustments even after project completion.",
                     rating: 5,
                     image: "/placeholder.svg?key=client2",
                   },
                   {
-                    name: "Emily Rodriguez",
-                    role: "Office Manager",
+                    name: "Krishna",
+                    role: "7680044611",
                     quote:
-                      "Our office redesign has improved productivity and employee satisfaction. The team understood our corporate culture perfectly.",
+                      "We wanted a simple yet elegant look for our new flat, and SIDDHAN INTERIORS  delivered exactly that. Their carpentry, painting, and lighting work are excellent. They really transformed our space into a BEAUTIFUL home. Highly satisfied and definitely recommend their services.",
                     rating: 5,
                     image: "/placeholder.svg?key=client3",
                   },
@@ -2101,7 +2186,7 @@ export default function SiddanInfraWebsite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <img src="https://i.ibb.co/nqXLCD0V/New-Project-13.png" alt="Siddan Infra Logo" className="h-14 mb-4" />
+              <img src="https://i.ibb.co/SXJR3BTf/Untitled-1.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
               <p className="text-black-900 leading-relaxed max-w-md">
                 Transforming visions into reality through innovative infrastructure development and interior design
                 solutions.
@@ -2114,24 +2199,55 @@ export default function SiddanInfraWebsite() {
                 <li>Infrastructure Development</li>
                 <li>Interior Design</li>
                 <li>Project Management</li>
+                <li>Sales</li>
                 <li>Consultation</li>
+
               </ul>
             </div>
 
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-black-900">
-                <li>+1 483 944 954</li>
-                <li>info@siddaninfra.com</li>
-                <li>Milwaukee, WI</li>
+                <li>+91 94948 416113</li>
+                <li>+91 99088 08958</li>
+                <li>siddhaninfrastructures682@gmail.com</li>
+                <li>
+                <p className="font-medium text-gray-900">Address </p>
+
+                <p className="text-gray-600">
+                        H.No.3-8/36 ,  
+                          <br />
+                          Rajiv Gandhi Nagar, 
+                          <br />
+                          bachupally, medchal, 
+                          <br />
+
+                          Hyderabad-500090
+                        </p>
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
-            <p>&copy; 2024 Siddan Infra. All rights reserved.</p>
+            <p>&copy; 2024 siddhan Infra. All rights reserved.</p>
           </div>
+           {/* WhatsApp floating button */}
+      <a
+          href="https://wa.me/919494841613"
+          target="Hi"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50"
+        >
+          <div className="fixed bottom-6 right-6 z-50">
+            <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors cursor-pointer">
+              <MessageCircle className="w-7 h-7 text-white" />
+            </div>
         </div>
+      
+      </a>
+        </div>
+
       </footer>
     </div>
   )
