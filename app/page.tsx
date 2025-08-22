@@ -138,7 +138,7 @@ export default function siddhanInfraWebsite() {
             <div className="absolute left-1/2 transform -translate-x-1/2">
               <button onClick={() => handlePageChange("interiors")}>
                 <Image
-                  src="https://i.ibb.co/SXJR3BTf/Untitled-1.png"
+                  src="/siddhan-logo.png"
                   alt="Siddhan Infrastructure"
                   width={160}
                   height={45}
@@ -1808,12 +1808,13 @@ export default function siddhanInfraWebsite() {
                     image: "https://framerusercontent.com/images/KQl9gxWQKSWL4CeS4TljSLOwE.png",
                     features: ["3D Renderings", "Virtual Tours", "Material Samples", "Design Previews"],
                   },
+                  // 
                 ].map((service, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 0 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    transition={{ duration: 0, delay: index * 0 }}
                     viewport={{ once: true }}
                     className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                   >
@@ -1866,8 +1867,8 @@ export default function siddhanInfraWebsite() {
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0 }}
+                  viewport={{ once: false }}
                   className="lg:col-span-2 relative h-96 rounded-2xl overflow-hidden shadow-xl"
                 >
                   <Image
@@ -1911,8 +1912,8 @@ export default function siddhanInfraWebsite() {
                       key={index}
                       initial={{ opacity: 0, x: 50 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.8, delay: index * 0.2 }}
-                      viewport={{ once: true }}
+                      transition={{ duration: 0, delay: index * 0}}
+                      viewport={{ once: false }}
                       className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <div className="relative h-32">
@@ -1965,7 +1966,7 @@ export default function siddhanInfraWebsite() {
                     key={index}
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    transition={{ duration: 0, delay: index * 0 }}
                     viewport={{ once: true }}
                     className="relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
@@ -2186,7 +2187,7 @@ export default function siddhanInfraWebsite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <img src="https://i.ibb.co/SXJR3BTf/Untitled-1.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
+              <img src="/siddhan-logo.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
               <p className="text-black-900 leading-relaxed max-w-md">
                 Transforming visions into reality through innovative infrastructure development and interior design
                 solutions.
