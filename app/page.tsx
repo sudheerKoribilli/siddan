@@ -160,7 +160,7 @@ export default function siddhanInfraWebsite() {
             <div className="flex items-center justify-between">
               <button onClick={() => handlePageChange("interiors")}>
                 <Image
-                  src="https://i.ibb.co/nqXLCD0V/New-Project-13.png"
+                  src="/siddhan-logo.png"
                   alt="Siddhan Infrastructure"
                   width={140}
                   height={48}
@@ -176,29 +176,45 @@ export default function siddhanInfraWebsite() {
             {isMobileMenuOpen && (
               <div className="mt-4 pt-4 border-t border-gray-200 space-y-3 animate-in fade-in-0 duration-200">
                 <button
-                  onClick={() => handlePageChange("construction")}
-                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
-                >
-                  Construction
-                </button>
-                <button
-                  onClick={() => handlePageChange("interiors")}
-                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
-                >
-                  Interiors
-                </button>
-                <button
-                  onClick={() => handlePageChange("contact")}
-                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
-                >
-                  Contact
-                </button>
-                <Button
-                  onClick={() => handlePageChange("contact")}
-                  className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white rounded-full text-sm font-medium mt-4"
-                >
-                  Get in touch
-                </Button>
+  onClick={() => {
+    handlePageChange("construction")
+    setIsMobileMenuOpen(false)  // ✅ closes menu
+  }}
+  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+>
+  Construction
+</button>
+
+<button
+  onClick={() => {
+    handlePageChange("interiors")
+    setIsMobileMenuOpen(false)
+  }}
+  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+>
+  Interiors
+</button>
+
+<button
+  onClick={() => {
+    handlePageChange("contact")
+    setIsMobileMenuOpen(false)
+  }}
+  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+>
+  Contact
+</button>
+
+<Button
+  onClick={() => {
+    handlePageChange("contact")
+    setIsMobileMenuOpen(false)
+  }}
+  className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white rounded-full text-sm font-medium mt-4"
+>
+  Get in touch
+</Button>
+
               </div>
             )}
           </div>
