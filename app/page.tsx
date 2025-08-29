@@ -1,12 +1,37 @@
 "use client"
+import { 
+  useState, 
+  useEffect 
+} from "react"
 
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, ChevronDown, Menu, X, Phone,MessageCircle, Mail, MapPin, Minus, Plus, Star } from "lucide-react"
+import { 
+  motion, 
+  useScroll, 
+  useTransform 
+} from "framer-motion"
+
+import { 
+  ArrowRight, 
+  ChevronDown, 
+  Menu, 
+  X, 
+  Phone,
+  MessageCircle, 
+  Mail, 
+  MapPin, 
+  Minus, 
+  Plus, 
+  Star, 
+  Facebook, 
+  Instagram, 
+  Youtube
+} from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+
 
 
 export default function siddhanInfraWebsite() {
@@ -335,93 +360,97 @@ export default function siddhanInfraWebsite() {
 
 
               {/* Contact Information */}
-              <div className="space-y-8">
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center">
-                        <Phone className="w-5 h-5 text-[#0d93b4]" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Phone</p>
-                        <p className="text-gray-600">+91 94948 41613</p>
-                        <p className="text-gray-600">+91 99088 08958</p>
+              <div className="space-y-8 max-w-4xl mx-auto px-4">
+  <div className="bg-white rounded-2xl p-8 shadow-lg">
+    <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
+    <div className="space-y-4">
+      {/* Phone */}
+      <div className="flex items-start space-x-3">
+        <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+          <Phone className="w-5 h-5 text-[#0d93b4]" />
+        </div>
+        <div className="flex flex-col">
+          <p className="font-medium text-gray-900">Phone</p>
+          <p className="text-gray-600">
+            <a href="tel:+919494841613" className="hover:underline cursor-pointer">
+              +91 94948 41613
+            </a>
+          </p>
+          <p className="text-gray-600">
+            <a href="tel:+919908808958" className="hover:underline cursor-pointer">
+              +91 99088 08958
+            </a>
+          </p>
+        </div>
+      </div>
 
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center">
-                        <Mail className="w-5 h-5 text-[#0d93b4]" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Email</p>
-                        <p className="text-gray-600">siddhaninfrastructures682@gmail.com</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-[#0d93b4]" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Address 1</p>
-                        <p className="text-gray-600">
-                        H.No.3-8/36 ,  
-                          <br />
-                          Rajiv Gandhi Nagar, 
-                          <br />
-                          bachupally, medchal, 
-                          <br />
+      {/* Email */}
+      <div className="flex items-start space-x-3">
+        <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+          <Mail className="w-5 h-5 text-[#0d93b4]" />
+        </div>
+        <div>
+          <p className="font-medium text-gray-900">Email</p>
+          <p className="text-gray-600">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=siddhaninfrastructures682@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline cursor-pointer"
+            >
+              siddhaninfrastructures682@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
 
-                          Hyderabad-500090
-                        </p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Address2</p>
-                        
-                        <p className="text-gray-600">
-                          The Gardeniya building 1st floor,
-                          <br />
-                          Akshay park,
-                          <br />
-                          near Bharat petroleum,
-                          <br />
-
-                          GOKUL ROAD HUBLI - 580020
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Business Hours</h3>
-                  <div className="space-y-2 text-gray-600">
-                    <div className="flex justify-between">
-                      <span>Monday - Friday</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Saturday</span>
-                      <span>9:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sunday</span>
-                      <span>Closed</span>
-                    </div>
-                  </div>
-                </div> */}
-
-                {/* <div className="bg-blue-50 rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Book an Appointment</h3>
-                  <p className="text-gray-600 mb-6">
-                    Schedule a consultation to discuss your project requirements in detail.
-                  </p>
-                  <Button className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium">
-                    Schedule Consultation
-                  </Button>
-                </div> */}
+      {/* Addresses */}
+      <div className="flex flex-col space-y-4">
+        <div className="flex items-start space-x-3">
+          <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+            <MapPin className="w-5 h-5 text-[#0d93b4]" />
+          </div>
+          <div className="flex flex-col space-y-2">
+            {/* Address 1 */}
+            <a
+              href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+                <p className="font-medium text-gray-900">Address 1</p>
+                <p className="text-gray-600">
+                  Sy No.307/E/24/&307/2, T20 Arena, <br />
+                  Tagore Estates, Mithila Nagar, <br />
+                  Pragathi Nagar, Hyderabad, Medchal Malkajgiri, <br />
+                  Telangana-500090, India.
+                </p>
               </div>
+            </a>
+
+            {/* Address 2 */}
+            <a
+              href="https://www.google.com/maps?q=The+Gardeniya+building+1st+floor,+Akshay+park,+near+Bharat+petroleum,+GOKUL+ROAD+HUBLI+-+580020"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+                <p className="font-medium text-gray-900">Address 2</p>
+                <p className="text-gray-600">
+                  The Gardeniya building 1st floor, <br />
+                  Akshay park, <br />
+                  near Bharat petroleum, <br />
+                  GOKUL ROAD HUBLI - 580020
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
             </div>
           </div>
         </section>
@@ -2200,72 +2229,115 @@ export default function siddhanInfraWebsite() {
 
       {/* Footer */}
       <footer className="bg-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <img src="/siddhan-logo.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
-              <p className="text-black-900 leading-relaxed max-w-md">
-                Transforming visions into reality through innovative infrastructure development and interior design
-                solutions.
-              </p>
-            </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid md:grid-cols-4 gap-8">
+      <div className="md:col-span-2">
+        <img src="/siddhan-logo.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
+        <p className="text-black-900 leading-relaxed max-w-md">
+          Transforming visions into reality through innovative infrastructure development and interior design
+          solutions.
+        </p>
+      </div>
 
-            <div>
-              <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-black-900">
-                <li>Infrastructure Development</li>
-                <li>Interior Design</li>
-                <li>Project Management</li>
-                <li>Sales</li>
-                <li>Consultation</li>
+      <div>
+        <h3 className="font-semibold mb-4">Services</h3>
+        <ul className="space-y-2 text-black-900">
+          <li>Infrastructure Development</li>
+          <li>Interior Design</li>
+          <li>Project Management</li>
+          <li>Sales</li>
+          <li>Consultation</li>
+        </ul>
+      </div>
 
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-black-900">
-                <li>+91 94948 416113</li>
-                <li>+91 99088 08958</li>
-                <li>siddhaninfrastructures682@gmail.com</li>
-                <li>
-                <p className="font-medium text-gray-900">Address </p>
-
+      <div>
+        <h3 className="font-semibold mb-4">Contact</h3>
+        <ul className="space-y-2 text-black-900">
+          <li>
+            <a href="tel:+919494841613" className="hover:underline cursor-pointer">
+              +91 94948 41613
+            </a>
+          </li>
+          <li>
+            <a href="tel:+919908808958" className="hover:underline cursor-pointer">
+              +91 99088 08958
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:siddhaninfrastructures682@gmail.com"
+              className="hover:underline cursor-pointer"
+            >
+              siddhaninfrastructures682@gmail.com
+            </a>
+          </li>
+          <li>
+            <p className="font-medium text-gray-900">Address</p>
+            <a
+              href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
                 <p className="text-gray-600">
-                        H.No.3-8/36 ,  
-                          <br />
-                          Rajiv Gandhi Nagar, 
-                          <br />
-                          bachupally, medchal, 
-                          <br />
+                  Sy No.307/E/24/&307/2, T20 Arena, <br />
+                  Tagore Estates, Mithila Nagar, <br />
+                  Pragathi Nagar, Hyderabad, Medchal Malkajgiri, <br />
+                  Telangana-500090, India.
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-                          Hyderabad-500090
-                        </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
-            <p>&copy; 2024 siddhan Infra. All rights reserved.</p>
-          </div>
-           {/* WhatsApp floating button */}
+    {/* Social media icons */}
+    <div className="flex justify-center space-x-6 mt-8">
       <a
-          href="https://wa.me/919494841613"
-          target="Hi"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50"
-        >
-          <div className="fixed bottom-6 right-6 z-50">
-            <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors cursor-pointer">
-              <MessageCircle className="w-7 h-7 text-white" />
-            </div>
-        </div>
-      
+        href="https://www.facebook.com/share/1Znwccsikc/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 hover:text-blue-600"
+      >
+        <Facebook className="w-6 h-6" />
       </a>
-        </div>
+      <a
+        href="https://www.instagram.com/siddhaninteriors?igsh=MW40M2UyNWQxazJkbg=="
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 hover:text-pink-500"
+      >
+        <Instagram className="w-6 h-6" />
+      </a>
+      <a
+        href="https://youtube.com/@siddhaninfraandinteriors?si=9XmBkPaXlO7WCdCm"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 hover:text-red-600"
+      >
+        <Youtube className="w-6 h-6" />
+      </a>
+    </div>
 
-      </footer>
+    <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
+      <p>&copy; 2024 siddhan Infra. All rights reserved.</p>
+    </div>
+
+    {/* WhatsApp floating button */}
+    <a
+      href="https://wa.me/919494841613"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50"
+    >
+      <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors cursor-pointer">
+        <MessageCircle className="w-7 h-7 text-white" />
+      </div>
+    </a>
+  </div>
+</footer>
+
     </div>
   )
 }
