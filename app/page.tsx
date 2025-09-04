@@ -1,70 +1,61 @@
-"use client"
-import { 
-  useState, 
-  useEffect 
-} from "react"
+"use client";
+import { useState, useEffect } from "react";
 
-import { 
-  motion, 
-  useScroll, 
-  useTransform 
-} from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion";
 
-import { 
-  ArrowRight, 
-  ChevronDown, 
-  Menu, 
-  X, 
+import {
+  ArrowRight,
+  ChevronDown,
+  Menu,
+  X,
   Phone,
-  MessageCircle, 
-  Mail, 
-  MapPin, 
-  Minus, 
-  Plus, 
-  Star, 
-  Facebook, 
-  Instagram, 
-  Youtube
-} from "lucide-react"
+  MessageCircle,
+  Mail,
+  MapPin,
+  Minus,
+  Plus,
+  Star,
+  Facebook,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-
-
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function siddhanInfraWebsite() {
-  const [currentPage, setCurrentPage] = useState("interiors")
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isNavVisible, setIsNavVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [openFaq, setOpenFaq] = useState<number | null>(0)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 300], [0, -50])
-  const y2 = useTransform(scrollY, [0, 300], [0, 50])
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState("interiors");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 300], [0, -50]);
+  const y2 = useTransform(scrollY, [0, 300], [0, 50]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY || currentScrollY < 10) {
         // Scrolling up or at top
-        setIsNavVisible(true)
+        setIsNavVisible(true);
       } else {
         // Scrolling down
-        setIsNavVisible(false)
-        setIsMenuOpen(false) // Close mobile menu when hiding navbar
+        setIsNavVisible(false);
+        setIsMenuOpen(false); // Close mobile menu when hiding navbar
       }
 
-      setLastScrollY(currentScrollY)
-    }
+      setLastScrollY(currentScrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const testimonials = [
     {
@@ -85,14 +76,14 @@ export default function siddhanInfraWebsite() {
       name: "Michael Johnson",
       position: "Operations Director, TechCorp",
     },
-  ]
+  ];
 
   const handlePageChange = (page: string) => {
-    setCurrentPage(page)
-    setIsMenuOpen(false)
+    setCurrentPage(page);
+    setIsMenuOpen(false);
     // Scroll to top when changing pages
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const faqData = [
     {
@@ -120,13 +111,15 @@ export default function siddhanInfraWebsite() {
       answer:
         "Project timelines vary based on scope and complexity, typically ranging from 3-12 months for most interior projects and 6-24 months for infrastructure projects.",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <header
         className={`fixed top-0 left-0 right-0 z-50 p-4 transition-transform duration-300 ${
-          isNavVisible || window.innerWidth >= 768 ? "translate-y-0" : "-translate-y-full"
+          isNavVisible || window.innerWidth >= 768
+            ? "translate-y-0"
+            : "-translate-y-full"
         }`}
       >
         <div className="max-w-7xl mx-auto">
@@ -137,7 +130,9 @@ export default function siddhanInfraWebsite() {
               <button
                 onClick={() => handlePageChange("construction")}
                 className={`text-sm font-medium transition-colors ${
-                  currentPage === "construction" ? "text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  currentPage === "construction"
+                    ? "text-gray-900"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 Construction
@@ -145,7 +140,9 @@ export default function siddhanInfraWebsite() {
               <button
                 onClick={() => handlePageChange("interiors")}
                 className={`text-sm font-medium transition-colors ${
-                  currentPage === "interiors" ? "text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  currentPage === "interiors"
+                    ? "text-gray-900"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 Interiors
@@ -153,7 +150,9 @@ export default function siddhanInfraWebsite() {
               <button
                 onClick={() => handlePageChange("contact")}
                 className={`text-sm font-medium transition-colors ${
-                  currentPage === "contact" ? "text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  currentPage === "contact"
+                    ? "text-gray-900"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 Contact
@@ -192,54 +191,60 @@ export default function siddhanInfraWebsite() {
                   className="w-18 h-12 hover:opacity-80 transition-opacity"
                 />
               </button>
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 text-gray-600 hover:text-gray-900">
-  {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-</button>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-gray-600 hover:text-gray-900"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
+              </button>
             </div>
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
               <div className="mt-4 pt-4 border-t border-gray-200 space-y-3 animate-in fade-in-0 duration-200">
                 <button
-  onClick={() => {
-    handlePageChange("construction")
-    setIsMobileMenuOpen(false)  // ✅ closes menu
-  }}
-  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
->
-  Construction
-</button>
+                  onClick={() => {
+                    handlePageChange("construction");
+                    setIsMobileMenuOpen(false); // ✅ closes menu
+                  }}
+                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+                >
+                  Construction
+                </button>
 
-<button
-  onClick={() => {
-    handlePageChange("interiors")
-    setIsMobileMenuOpen(false)
-  }}
-  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
->
-  Interiors
-</button>
+                <button
+                  onClick={() => {
+                    handlePageChange("interiors");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+                >
+                  Interiors
+                </button>
 
-<button
-  onClick={() => {
-    handlePageChange("contact")
-    setIsMobileMenuOpen(false)
-  }}
-  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
->
-  Contact
-</button>
+                <button
+                  onClick={() => {
+                    handlePageChange("contact");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left text-sm font-medium text-gray-600 hover:text-gray-900 py-2"
+                >
+                  Contact
+                </button>
 
-<Button
-  onClick={() => {
-    handlePageChange("contact")
-    setIsMobileMenuOpen(false)
-  }}
-  className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white rounded-full text-sm font-medium mt-4"
->
-  Get in touch
-</Button>
-
+                <Button
+                  onClick={() => {
+                    handlePageChange("contact");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white rounded-full text-sm font-medium mt-4"
+                >
+                  Get in touch
+                </Button>
               </div>
             )}
           </div>
@@ -250,207 +255,246 @@ export default function siddhanInfraWebsite() {
         <section className="min-h-screen pt-32 pb-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Get In Touch
+              </h1>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Ready to start your next project? Let's discuss how we can bring your vision to life.
+                Ready to start your next project? Let's discuss how we can bring
+                your vision to life.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12">
-             {/* Contact Form */}
-             <div className="bg-white rounded-2xl p-8 shadow-lg">
-  <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
-  <form
-    className="space-y-6"
-    onSubmit={async (e) => {
-      e.preventDefault();
+              {/* Contact Form */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  Send us a message
+                </h2>
+                <form
+                  className="space-y-6"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
 
-      const form = e.target as HTMLFormElement;
+                    const form = e.target as HTMLFormElement;
 
-      const data = {
-        name: (form.elements.namedItem("name") as HTMLInputElement).value,
-        email: (form.elements.namedItem("email") as HTMLInputElement).value,
-        phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
-        projectType: (form.elements.namedItem("projectType") as HTMLSelectElement).value,
-        message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-      };
+                    const data = {
+                      name: (
+                        form.elements.namedItem("name") as HTMLInputElement
+                      ).value,
+                      email: (
+                        form.elements.namedItem("email") as HTMLInputElement
+                      ).value,
+                      phone: (
+                        form.elements.namedItem("phone") as HTMLInputElement
+                      ).value,
+                      projectType: (
+                        form.elements.namedItem(
+                          "projectType"
+                        ) as HTMLSelectElement
+                      ).value,
+                      message: (
+                        form.elements.namedItem(
+                          "message"
+                        ) as HTMLTextAreaElement
+                      ).value,
+                    };
 
-      try {
-        const response = await fetch(
-          "https://script.google.com/macros/s/AKfycbz3xPtVqK4v6LpwRHl_6Fcwgo0StiliXFKTND892O_YL4Ikt2YnyIZRy0vXR4VM1FKR/exec", // 🔗 Replace with your deployed Google Script Web App URL
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" },
-            mode: "no-cors", // 👈 Important to bypass CORS restriction
-          }
-        );
+                    try {
+                      const response = await fetch(
+                        "https://script.google.com/macros/s/AKfycbz3xPtVqK4v6LpwRHl_6Fcwgo0StiliXFKTND892O_YL4Ikt2YnyIZRy0vXR4VM1FKR/exec", // 🔗 Replace with your deployed Google Script Web App URL
+                        {
+                          method: "POST",
+                          body: JSON.stringify(data),
+                          headers: { "Content-Type": "application/json" },
+                          mode: "no-cors", // 👈 Important to bypass CORS restriction
+                        }
+                      );
 
-        // Since mode: "no-cors" doesn’t return JSON, we just show success directly
-        alert("✅ Message sent successfully!");
-        form.reset();
-      } catch (error) {
-        console.error("Error:", error);
-        alert("❌ Failed to send message. Please try again.");
-      }
-    }}
-  >
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-      <input
-        type="text"
-        name="name"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-        placeholder="Your full name"
-        required
-      />
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-      <input
-        type="email"
-        name="email"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-        placeholder="your.email@example.com"
-        required
-      />
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-      <input
-        type="tel"
-        name="phone"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-        placeholder="94948 41613"
-      />
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
-      <select
-        name="projectType"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-        required
-      >
-        <option value="">Select project type</option>
-        <option>Construction</option>
-        <option>Interior Design</option>
-        <option>Both Construction & Interiors</option>
-        <option>Sales</option>
-        <option>Consultation</option>
-      </select>
-    </div>
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-      <textarea
-        rows={4}
-        name="message"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
-        placeholder="Tell us about your project..."
-      ></textarea>
-    </div>
-    <Button
-      type="submit"
-      className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium"
-    >
-      Send Message
-    </Button>
-  </form>
-</div>
-
-
+                      // Since mode: "no-cors" doesn’t return JSON, we just show success directly
+                      alert("✅ Message sent successfully!");
+                      form.reset();
+                    } catch (error) {
+                      console.error("Error:", error);
+                      alert("❌ Failed to send message. Please try again.");
+                    }
+                  }}
+                >
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+                      placeholder="94948 41613"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Project Type
+                    </label>
+                    <select
+                      name="projectType"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+                      required
+                    >
+                      <option value="">Select project type</option>
+                      <option>Construction</option>
+                      <option>Interior Design</option>
+                      <option>Both Construction & Interiors</option>
+                      <option>Sales</option>
+                      <option>Consultation</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      rows={4}
+                      name="message"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d93b4] focus:border-[#0d93b4]"
+                      placeholder="Tell us about your project..."
+                    ></textarea>
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#0d93b4] hover:bg-[#0b7a94] text-white py-3 rounded-lg font-medium"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </div>
 
               {/* Contact Information */}
               <div className="space-y-8 max-w-4xl mx-auto px-4">
-  <div className="bg-white rounded-2xl p-8 shadow-lg">
-    <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
-    <div className="space-y-4">
-      {/* Phone */}
-      <div className="flex items-start space-x-3">
-        <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
-          <Phone className="w-5 h-5 text-[#0d93b4]" />
-        </div>
-        <div className="flex flex-col">
-          <p className="font-medium text-gray-900">Phone</p>
-          <p className="text-gray-600">
-            <a href="tel:+919494841613" className="hover:underline cursor-pointer">
-              +91 94948 41613
-            </a>
-          </p>
-          <p className="text-gray-600">
-            <a href="tel:+919908808958" className="hover:underline cursor-pointer">
-              +91 99088 08958
-            </a>
-          </p>
-        </div>
-      </div>
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                    Contact Information
+                  </h3>
+                  <div className="space-y-4">
+                    {/* Phone */}
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+                        <Phone className="w-5 h-5 text-[#0d93b4]" />
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="font-medium text-gray-900">Phone</p>
+                        <p className="text-gray-600">
+                          <a
+                            href="tel:+919494841613"
+                            className="hover:underline cursor-pointer"
+                          >
+                            +91 94948 41613
+                          </a>
+                        </p>
+                        <p className="text-gray-600">
+                          <a
+                            href="tel:+919908808958"
+                            className="hover:underline cursor-pointer"
+                          >
+                            +91 99088 08958
+                          </a>
+                        </p>
+                      </div>
+                    </div>
 
-      {/* Email */}
-      <div className="flex items-start space-x-3">
-        <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
-          <Mail className="w-5 h-5 text-[#0d93b4]" />
-        </div>
-        <div>
-          <p className="font-medium text-gray-900">Email</p>
-          <p className="text-gray-600">
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=siddhaninfrastructures682@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline cursor-pointer"
-            >
-              siddhaninfrastructures682@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
+                    {/* Email */}
+                    <div className="flex items-start space-x-3">
+                      <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+                        <Mail className="w-5 h-5 text-[#0d93b4]" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900">Email</p>
+                        <p className="text-gray-600">
+                          <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=siddhaninfrastructures682@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline cursor-pointer"
+                          >
+                            siddhaninfrastructures682@gmail.com
+                          </a>
+                        </p>
+                      </div>
+                    </div>
 
-      {/* Addresses */}
-      <div className="flex flex-col space-y-4">
-        <div className="flex items-start space-x-3">
-          <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
-            <MapPin className="w-5 h-5 text-[#0d93b4]" />
-          </div>
-          <div className="flex flex-col space-y-2">
-            {/* Address 1 */}
-            <a
-              href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
-                <p className="font-medium text-gray-900">Address 1</p>
-                <p className="text-gray-600">
-                  Sy No.307/E/24/&307/2, T20 Arena, <br />
-                  Tagore Estates, Mithila Nagar, <br />
-                  Pragathi Nagar, Hyderabad, Medchal Malkajgiri, <br />
-                  Telangana-500090, India.
-                </p>
+                    {/* Addresses */}
+                    <div className="flex flex-col space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-10 h-10 bg-[#0d93b4]/10 rounded-lg flex items-center justify-center mt-1">
+                          <MapPin className="w-5 h-5 text-[#0d93b4]" />
+                        </div>
+                        <div className="flex flex-col space-y-2">
+                          {/* Address 1 */}
+                          <a
+                            href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+                              <p className="font-medium text-gray-900">
+                                Address 1
+                              </p>
+                              <p className="text-gray-600">
+                                Sy No.307/E/24/&307/2, T20 Arena, <br />
+                                Tagore Estates, Mithila Nagar, <br />
+                                Pragathi Nagar, Hyderabad, Medchal Malkajgiri,{" "}
+                                <br />
+                                Telangana-500090, India.
+                              </p>
+                            </div>
+                          </a>
+
+                          {/* Address 2 */}
+                          <a
+                            href="https://www.google.com/maps?q=The+Gardeniya+building+1st+floor,+Akshay+park,+near+Bharat+petroleum,+GOKUL+ROAD+HUBLI+-+580020"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+                              <p className="font-medium text-gray-900">
+                                Address 2
+                              </p>
+                              <p className="text-gray-600">
+                                The Gardeniya building 1st floor, <br />
+                                Akshay park, <br />
+                                near Bharat petroleum, <br />
+                                GOKUL ROAD HUBLI - 580020
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </a>
-
-            {/* Address 2 */}
-            <a
-              href="https://www.google.com/maps?q=The+Gardeniya+building+1st+floor,+Akshay+park,+near+Bharat+petroleum,+GOKUL+ROAD+HUBLI+-+580020"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
-                <p className="font-medium text-gray-900">Address 2</p>
-                <p className="text-gray-600">
-                  The Gardeniya building 1st floor, <br />
-                  Akshay park, <br />
-                  near Bharat petroleum, <br />
-                  GOKUL ROAD HUBLI - 580020
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
             </div>
           </div>
         </section>
@@ -483,8 +527,12 @@ export default function siddhanInfraWebsite() {
 
                 {/* Description */}
                 <div className="mb-8 animate-in fade-in-0 duration-700 delay-200">
-                  <p className="text-lg text-white/90 mb-2">We specialize in transforming visions into reality.</p>
-                  <p className="text-lg text-white/90">Explore our work of innovative architectural.</p>
+                  <p className="text-lg text-white/90 mb-2">
+                    We specialize in transforming visions into reality.
+                  </p>
+                  <p className="text-lg text-white/90">
+                    Explore our work of innovative architectural.
+                  </p>
                 </div>
 
                 {/* CTA Button */}
@@ -522,7 +570,9 @@ export default function siddhanInfraWebsite() {
               >
                 {/* Left Content */}
                 <div>
-                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">ABOUT US</div>
+                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">
+                    ABOUT US
+                  </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-teal-800 mb-8 leading-tight">
                     Architecture
                     <br />
@@ -681,15 +731,18 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider uppercase">Our Expertise</div>
+                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider uppercase">
+                  Our Expertise
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
                   Comprehensive Infrastructure
                   <br />
                   <span className="text-[#0d93b4]">Solutions</span>
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                  From groundbreaking construction to award-winning interiors, we deliver end-to-end solutions that
-                  transform spaces and exceed expectations.
+                  From groundbreaking construction to award-winning interiors,
+                  we deliver end-to-end solutions that transform spaces and
+                  exceed expectations.
                 </p>
               </motion.div>
 
@@ -700,21 +753,34 @@ export default function siddhanInfraWebsite() {
                     description:
                       "Complete construction solutions from residential complexes to commercial towers with advanced engineering techniques and sustainable practices.",
                     image: "/modern-construction-site.png",
-                    features: ["Residential Construction", "Commercial Buildings", "Infrastructure Development"],
+                    features: [
+                      "Residential Construction",
+                      "Commercial Buildings",
+                      "Infrastructure Development",
+                    ],
                   },
                   {
                     title: "Interior Design & Architecture",
                     description:
                       "Sophisticated interior solutions that blend functionality with aesthetic excellence, creating spaces that inspire and perform.",
-                    image: "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
-                    features: ["Luxury Interiors", "Space Planning", "Custom Furniture"],
+                    image:
+                      "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
+                    features: [
+                      "Luxury Interiors",
+                      "Space Planning",
+                      "Custom Furniture",
+                    ],
                   },
                   {
                     title: "Project Management",
                     description:
                       "End-to-end project management ensuring timely delivery, quality control, and seamless coordination across all phases.",
                     image: "/construction-project-team.png",
-                    features: ["Timeline Management", "Quality Assurance", "Cost Optimization"],
+                    features: [
+                      "Timeline Management",
+                      "Quality Assurance",
+                      "Cost Optimization",
+                    ],
                   },
                 ].map((service, index) => (
                   <div
@@ -731,11 +797,18 @@ export default function siddhanInfraWebsite() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
                     <div className="p-8">
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed mb-6">
+                        {service.description}
+                      </p>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-sm text-gray-500">
+                          <li
+                            key={idx}
+                            className="flex items-center text-sm text-gray-500"
+                          >
                             <div className="w-1.5 h-1.5 bg-[#0d93b4] rounded-full mr-3"></div>
                             {feature}
                           </li>
@@ -759,7 +832,9 @@ export default function siddhanInfraWebsite() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-sm font-semibold mb-6 tracking-wider opacity-80">SERVICES</div>
+                  <div className="text-sm font-semibold mb-6 tracking-wider opacity-80">
+                    SERVICES
+                  </div>
                   <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
                     Our Working
                     <br />
@@ -778,12 +853,16 @@ export default function siddhanInfraWebsite() {
                       viewport={{ once: true }}
                       className="flex gap-6"
                     >
-                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">01</div>
+                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">
+                        01
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Initial Consultation</h3>
+                        <h3 className="text-xl font-bold mb-3 text-white">
+                          Initial Consultation
+                        </h3>
                         <p className="text-teal-100 leading-relaxed">
-                          The process often begins with an initial consultation between the designer/architect. Get
-                          started from here.
+                          The process often begins with an initial consultation
+                          between the designer/architect. Get started from here.
                         </p>
                       </div>
                     </motion.div>
@@ -795,12 +874,16 @@ export default function siddhanInfraWebsite() {
                       viewport={{ once: true }}
                       className="flex gap-6"
                     >
-                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">02</div>
+                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">
+                        02
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Concept Development</h3>
+                        <h3 className="text-xl font-bold mb-3 text-white">
+                          Concept Development
+                        </h3>
                         <p className="text-teal-100 leading-relaxed">
-                          In this stage, the designer/architect gathers detailed information about the project
-                          requirements.
+                          In this stage, the designer/architect gathers detailed
+                          information about the project requirements.
                         </p>
                       </div>
                     </motion.div>
@@ -815,12 +898,16 @@ export default function siddhanInfraWebsite() {
                       viewport={{ once: true }}
                       className="flex gap-6"
                     >
-                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">03</div>
+                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">
+                        03
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Design Development</h3>
+                        <h3 className="text-xl font-bold mb-3 text-white">
+                          Design Development
+                        </h3>
                         <p className="text-teal-100 leading-relaxed">
-                          Depending on the project scope and location, the designer/architect may assist the client in
-                          obtaining.
+                          Depending on the project scope and location, the
+                          designer/architect may assist the client in obtaining.
                         </p>
                       </div>
                     </motion.div>
@@ -832,12 +919,17 @@ export default function siddhanInfraWebsite() {
                       viewport={{ once: true }}
                       className="flex gap-6"
                     >
-                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">04</div>
+                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">
+                        04
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Permitting & Approvals</h3>
+                        <h3 className="text-xl font-bold mb-3 text-white">
+                          Permitting & Approvals
+                        </h3>
                         <p className="text-teal-100 leading-relaxed">
-                          Depending on the project scope and location, the designer/architect may assist the client. We
-                          work to make you 100% happy.
+                          Depending on the project scope and location, the
+                          designer/architect may assist the client. We work to
+                          make you 100% happy.
                         </p>
                       </div>
                     </motion.div>
@@ -852,12 +944,16 @@ export default function siddhanInfraWebsite() {
                       viewport={{ once: true }}
                       className="flex gap-6 max-w-md"
                     >
-                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">05</div>
+                      <div className="text-3xl font-bold text-teal-300 min-w-[4rem]">
+                        05
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-3 text-white">Project Closeout</h3>
+                        <h3 className="text-xl font-bold mb-3 text-white">
+                          Project Closeout
+                        </h3>
                         <p className="text-teal-100 leading-relaxed">
-                          Once construction is complete, the designer/architect conducts a final inspection of the
-                          project.
+                          Once construction is complete, the designer/architect
+                          conducts a final inspection of the project.
                         </p>
                       </div>
                     </motion.div>
@@ -877,7 +973,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="mb-16"
               >
-                <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">WORKS</div>
+                <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">
+                  WORKS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-teal-800 leading-tight">
                   Our Projects
                   <br />& Designs
@@ -920,7 +1018,9 @@ export default function siddhanInfraWebsite() {
                   <div className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-xl font-bold text-teal-800 mb-1">D-Orex Home Interior</h3>
+                        <h3 className="text-xl font-bold text-teal-800 mb-1">
+                          D-Orex Home Interior
+                        </h3>
                         <p className="text-gray-600">Milwaukee, WI</p>
                       </div>
                       <ArrowRight className="w-5 h-5 text-teal-700" />
@@ -939,17 +1039,20 @@ export default function siddhanInfraWebsite() {
                   {
                     title: "Orion Home Studio Interior",
                     location: "Milwaukee, WI",
-                    image: "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
+                    image:
+                      "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
                   },
                   {
                     title: "Titan Office Interior",
                     location: "Milwaukee, WI",
-                    image: "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
+                    image:
+                      "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
                   },
                   {
                     title: "Luxury Residential Project",
                     location: "Milwaukee, WI",
-                    image: "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
+                    image:
+                      "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
                   },
                 ].map((project, index) => (
                   <motion.div
@@ -972,7 +1075,9 @@ export default function siddhanInfraWebsite() {
                     <div className="p-6">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="text-lg font-bold text-teal-800 mb-1">{project.title}</h3>
+                          <h3 className="text-lg font-bold text-teal-800 mb-1">
+                            {project.title}
+                          </h3>
                           <p className="text-gray-600">{project.location}</p>
                         </div>
                         <ArrowRight className="w-5 h-5 text-teal-700" />
@@ -1010,8 +1115,8 @@ export default function siddhanInfraWebsite() {
                 </h2>
 
                 <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                  We encourage clients to actively participate in discussions, share their ideas, preferences, and
-                  feedback.
+                  We encourage clients to actively participate in discussions,
+                  share their ideas, preferences, and feedback.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1020,9 +1125,10 @@ export default function siddhanInfraWebsite() {
                       asChild
                       className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full text-lg font-semibold group"
                     >
-                      <a href="#contact-form"
-                       onClick={() => handlePageChange("contact")}
-                       >
+                      <a
+                        href="#contact-form"
+                        onClick={() => handlePageChange("contact")}
+                      >
                         Get in touch
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </a>
@@ -1054,14 +1160,19 @@ export default function siddhanInfraWebsite() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">FAQS</div>
+                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">
+                    FAQS
+                  </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-teal-800 mb-8 leading-tight">
                     Still Have A
                     <br />
                     Question?
                   </h2>
 
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <Button
                       asChild
                       className="bg-teal-700 hover:bg-teal-800 text-white px-8 py-3 rounded-full text-lg font-semibold group"
@@ -1086,15 +1197,25 @@ export default function siddhanInfraWebsite() {
                       className="bg-white rounded-2xl shadow-sm border border-gray-100"
                     >
                       <button
-                        onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                        onClick={() =>
+                          setOpenFaq(openFaq === index ? null : index)
+                        }
                         className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors rounded-2xl"
                       >
                         <div className="flex items-center gap-4">
-                          <span className="text-2xl font-bold text-gray-300">{String(index + 1).padStart(2, "0")}</span>
-                          <span className="text-lg font-semibold text-teal-800">{faq.question}</span>
+                          <span className="text-2xl font-bold text-gray-300">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-lg font-semibold text-teal-800">
+                            {faq.question}
+                          </span>
                         </div>
                         <div className="text-teal-700">
-                          {openFaq === index ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                          {openFaq === index ? (
+                            <Minus className="w-5 h-5" />
+                          ) : (
+                            <Plus className="w-5 h-5" />
+                          )}
                         </div>
                       </button>
 
@@ -1107,7 +1228,9 @@ export default function siddhanInfraWebsite() {
                           className="px-6 pb-6"
                         >
                           <div className="pl-12">
-                            <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                            <p className="text-gray-600 leading-relaxed">
+                              {faq.answer}
+                            </p>
                           </div>
                         </motion.div>
                       )}
@@ -1130,29 +1253,37 @@ export default function siddhanInfraWebsite() {
               >
                 {/* Left Content - Contact Info */}
                 <div>
-                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">CONTACT US</div>
+                  <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">
+                    CONTACT US
+                  </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-teal-800 mb-8 leading-tight">
                     Get in Touch
                     <br />
                     With Us.
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    Have a question or a project in mind? We'd love to hear from you. Fill out the form or reach us
-                    directly.
+                    Have a question or a project in mind? We'd love to hear from
+                    you. Fill out the form or reach us directly.
                   </p>
 
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
                       <Phone className="w-6 h-6 text-teal-700" />
-                      <span className="text-lg text-gray-700">+1 483 944 954</span>
+                      <span className="text-lg text-gray-700">
+                        +1 483 944 954
+                      </span>
                     </div>
                     <div className="flex items-center gap-4">
                       <Mail className="w-6 h-6 text-teal-700" />
-                      <span className="text-lg text-gray-700">siddhaninfrastructures682@gmail.com</span>
+                      <span className="text-lg text-gray-700">
+                        siddhaninfrastructures682@gmail.com
+                      </span>
                     </div>
                     <div className="flex items-center gap-4">
                       <MapPin className="w-6 h-6 text-teal-700" />
-                      <span className="text-lg text-gray-700">123 Design St, Milwaukee, WI 53202</span>
+                      <span className="text-lg text-gray-700">
+                        123 Design St, Milwaukee, WI 53202
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -1167,22 +1298,46 @@ export default function siddhanInfraWebsite() {
                 >
                   <form className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Name
                       </label>
-                      <Input id="name" type="text" placeholder="Your Name" className="w-full" />
+                      <Input
+                        id="name"
+                        type="text"
+                        placeholder="Your Name"
+                        className="w-full"
+                      />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Email
                       </label>
-                      <Input id="email" type="email" placeholder="Your Email" className="w-full" />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Your Email"
+                        className="w-full"
+                      />
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Message
                       </label>
-                      <Textarea id="message" placeholder="Your Message" rows={5} className="w-full" />
+                      <Textarea
+                        id="message"
+                        placeholder="Your Message"
+                        rows={5}
+                        className="w-full"
+                      />
                     </div>
                     <Button className="w-full bg-teal-700 hover:bg-teal-800 text-white py-3 rounded-full text-lg font-semibold">
                       Send Message
@@ -1215,7 +1370,10 @@ export default function siddhanInfraWebsite() {
                 transition={{ duration: 0.8 }}
                 className="text-white"
               >
-                <div className="text-sm font-semibold mb-4 tracking-wider" style={{ color: "#0d93b4" }}>
+                <div
+                  className="text-sm font-semibold mb-4 tracking-wider"
+                  style={{ color: "#0d93b4" }}
+                >
                   CONSTRUCTION DIVISION
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
@@ -1225,12 +1383,12 @@ export default function siddhanInfraWebsite() {
                   </span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  With over two decades of experience, we deliver world-class construction projects that stand the test
-                  of time. From commercial complexes to residential developments, we build with precision and
-                  excellence.
+                  With over two decades of experience, we deliver world-class
+                  construction projects that stand the test of time. From
+                  commercial complexes to residential developments, we build
+                  with precision and excellence.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  
                   <Button
                     variant="outline"
                     className="border-white text-white hover:bg-[#0d93b4] hover:text-gray-900 px-8 py-3 rounded-full text-lg font-semibold bg-transparent"
@@ -1253,34 +1411,55 @@ export default function siddhanInfraWebsite() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-sm font-semibold mb-4 tracking-wider" style={{ color: "#0d93b4" }}>
+                  <div
+                    className="text-sm font-semibold mb-4 tracking-wider"
+                    style={{ color: "#0d93b4" }}
+                  >
                     ABOUT OUR CONSTRUCTION DIVISION
                   </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                     7+ Years of
                     <br />
-                    <span style={{ color: "#0d93b4" }}>Construction Excellence</span>
+                    <span style={{ color: "#0d93b4" }}>
+                      Construction Excellence
+                    </span>
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    Since 1999, siddhan Infra has been at the forefront of construction innovation, delivering projects
-                    that exceed expectations and set new industry standards.
+                    Since 1999, siddhan Infra has been at the forefront of
+                    construction innovation, delivering projects that exceed
+                    expectations and set new industry standards.
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
-                      <span className="text-gray-700">15+ Projects Completed Successfully</span>
+                      <div
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: "#0d93b4" }}
+                      ></div>
+                      <span className="text-gray-700">
+                        15+ Projects Completed Successfully
+                      </span>
                     </div>
                     {/* <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
                       <span className="text-gray-700">ISO 9001:2015 Certified Quality Management</span>
                     </div> */}
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
-                      <span className="text-gray-700">Project Management & Sustainable Construction</span>
+                      <div
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: "#0d93b4" }}
+                      ></div>
+                      <span className="text-gray-700">
+                        Project Management & Sustainable Construction
+                      </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0d93b4" }}></div>
-                      <span className="text-gray-700">24/7 Project Management & Support</span>
+                      <div
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: "#0d93b4" }}
+                      ></div>
+                      <span className="text-gray-700">
+                        24/7 Project Management & Support
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -1323,7 +1502,10 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold mb-4 tracking-wider" style={{ color: "#0d93b4" }}>
+                <div
+                  className="text-sm font-semibold mb-4 tracking-wider"
+                  style={{ color: "#0d93b4" }}
+                >
                   OUR CONSTRUCTION SERVICES
                 </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
@@ -1332,8 +1514,8 @@ export default function siddhanInfraWebsite() {
                   <span style={{ color: "#0d93b4" }}>Solutions</span>
                 </h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  From initial planning to final handover, we provide end-to-end construction services with unmatched
-                  quality and reliability.
+                  From initial planning to final handover, we provide end-to-end
+                  construction services with unmatched quality and reliability.
                 </p>
               </motion.div>
 
@@ -1344,53 +1526,74 @@ export default function siddhanInfraWebsite() {
                     description:
                       "Office buildings, retail spaces, warehouses, and industrial facilities built to the highest standards.",
                     image: "/modern-commercial-construction.png",
-                    features: ["Office Complexes", "Retail Centers", "Warehouses", "Industrial Plants"],
+                    features: [
+                      "Office Complexes",
+                      "Retail Centers",
+                      "Warehouses",
+                      "Industrial Plants",
+                    ],
                   },
                   {
                     title: "Residential Development",
                     description:
                       "Luxury homes, apartment complexes, and residential communities designed for modern living.",
                     image: "/modern-home-construction.png",
-                    features: ["Luxury Homes", "Apartments", "Gated Communities", "Townhouses"],
+                    features: [
+                      "Luxury Homes",
+                      "Apartments",
+                      "Gated Communities",
+                      "Townhouses",
+                    ],
                   },
                   {
                     title: "Material Contract",
-                    description: "Supplying and managing high-quality construction materials to ensure durability, safety, and cost efficiency.",
+                    description:
+                      "Supplying and managing high-quality construction materials to ensure durability, safety, and cost efficiency.",
                     image: "/infrastructure-construction.png",
                     features: [
                       "Cement & Concrete Supply",
                       "Structural Steel & Rebars",
                       "Sand, Gravel & Aggregates",
                       "Bricks, Blocks & Tiles",
-                      
                     ],
                   },
-                  
+
                   {
                     title: "Renovation & Remodeling",
-                    description: "Transform existing spaces with our expert renovation and modernization services.",
+                    description:
+                      "Transform existing spaces with our expert renovation and modernization services.",
                     image: "/building-renovation.png",
-                    features: ["Building Upgrades", "Space Optimization", "Modernization", "Restoration"],
+                    features: [
+                      "Building Upgrades",
+                      "Space Optimization",
+                      "Modernization",
+                      "Restoration",
+                    ],
                   },
                   {
                     title: "Project Management",
                     description:
                       "Complete project oversight from conception to completion with dedicated project managers.",
                     image: "/construction-project-team.png",
-                    features: ["Timeline Management", "Quality Control", "Budget Oversight", "Risk Management"],
+                    features: [
+                      "Timeline Management",
+                      "Quality Control",
+                      "Budget Oversight",
+                      "Risk Management",
+                    ],
                   },
                   {
                     title: "Sales Apartments",
-                    description: "Modern residential apartments designed for comfort, convenience, and contemporary living.",
+                    description:
+                      "Modern residential apartments designed for comfort, convenience, and contemporary living.",
                     image: "/green-sustainable-building.png",
                     features: [
                       "1 BHK Units",
                       "2 BHK Units",
                       "3 BHK Units",
-                      "Luxury & Penthouse Apartments"
+                      "Luxury & Penthouse Apartments",
                     ],
                   },
-                  
                 ].map((service, index) => (
                   <motion.div
                     key={index}
@@ -1409,11 +1612,18 @@ export default function siddhanInfraWebsite() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        {service.description}
+                      </p>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                          <li
+                            key={idx}
+                            className="flex items-center gap-2 text-sm text-gray-600"
+                          >
                             <div className="w-1.5 h-1.5 bg-[#0d93b4] rounded-full"></div>
                             {feature}
                           </li>
@@ -1436,7 +1646,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">FEATURED PROJECTS</div>
+                <div className="text-sm font-semibold text-teal-700 mb-4 tracking-wider">
+                  FEATURED PROJECTS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
                   Our Construction
                   <br />
@@ -1454,21 +1666,25 @@ export default function siddhanInfraWebsite() {
                   className="relative h-96 rounded-2xl overflow-hidden shadow-xl"
                 >
                   <Image
-                    src="/completed-luxury-tower.png"
+                    src="/Page 1.png"
                     alt="Skyline Commercial Tower"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">Skyline Commercial Tower</h3>
-                    <p className="text-gray-200 mb-2">42-story mixed-use development</p>
+                    <h3 className="text-2xl font-bold mb-2">
+                      siddhan infra
+                    </h3>
+                    {/* <p className="text-gray-200 mb-2">
+                      42-story mixed-use development
+                    </p> */}
                     <div className="flex items-center gap-4 text-sm">
-                      <span>Milwaukee, WI</span>
+                      <span> Hubli ,Karnataka</span>
                       <span>•</span>
-                      <span>Completed 2023</span>
-                      <span>•</span>
-                      <span>$85M Project</span>
+                      <span>Completed 2024</span>
+                      {/* <span>•</span> */}
+                      {/* <span>$85M Project</span> */}
                     </div>
                   </div>
                 </motion.div>
@@ -1476,20 +1692,22 @@ export default function siddhanInfraWebsite() {
                 <div className="space-y-6">
                   {[
                     {
-                      title: "Riverside Residential Complex",
-                      location: "Madison, WI",
+                      title: "kanumuri",
+                      location: "Bachupally, Hyderabad",
                       year: "2023",
-                      value: "$45M",
-                      description: "300-unit luxury apartment complex with amenities",
-                      image: "/modern-apartment-complex.png",
+                      // value: "$45M",
+                      description:
+                        "G+4 luxury apartment ",
+                      image: "/WhatsApp Image 2025-08-30 at 3.15.56 PM.jpeg",
                     },
                     {
-                      title: "Tech Campus Phase II",
-                      location: "Milwaukee, WI",
-                      year: "2022",
-                      value: "$62M",
-                      description: "State-of-the-art technology and research facility",
-                      image: "/modern-tech-campus.png",
+                      title: "siddhan infra ",
+                      location: "Hubli ,Karnataka", 
+                      year: "2024",
+                      // value: "$62M",
+                      description:
+                        "G+4 luxury apartment",
+                      image: "/WhatsApp Image 2025-08-30 at 3.12.03 PM.jpeg",
                     },
                   ].map((project, index) => (
                     <motion.div
@@ -1510,8 +1728,12 @@ export default function siddhanInfraWebsite() {
                           />
                         </div>
                         <div className="p-6 flex-1">
-                          <h4 className="text-lg font-bold text-gray-900 mb-2">{project.title}</h4>
-                          <p className="text-gray-600 text-sm mb-3">{project.description}</p>
+                          <h4 className="text-lg font-bold text-gray-900 mb-2">
+                            {project.title}
+                          </h4>
+                          <p className="text-gray-600 text-sm mb-3">
+                            {project.description}
+                          </p>
                           <div className="flex items-center gap-4 text-xs text-gray-500">
                             <span>{project.location}</span>
                             <span>•</span>
@@ -1559,7 +1781,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">OUR PROCESS</div>
+                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">
+                  OUR PROCESS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold mb-8">
                   How We Build
                   <br />
@@ -1572,22 +1796,26 @@ export default function siddhanInfraWebsite() {
                   {
                     step: "01",
                     title: "Planning & Design",
-                    description: "Comprehensive project planning, architectural design, and engineering analysis.",
+                    description:
+                      "Comprehensive project planning, architectural design, and engineering analysis.",
                   },
                   {
                     step: "02",
                     title: "Permits & Approvals",
-                    description: "Handling all regulatory requirements, permits, and compliance documentation.",
+                    description:
+                      "Handling all regulatory requirements, permits, and compliance documentation.",
                   },
                   {
                     step: "03",
                     title: "Construction Phase",
-                    description: "Skilled execution with quality control, safety protocols, and timeline management.",
+                    description:
+                      "Skilled execution with quality control, safety protocols, and timeline management.",
                   },
                   {
                     step: "04",
                     title: "Delivery & Support",
-                    description: "Final inspection, handover, and ongoing maintenance support services.",
+                    description:
+                      "Final inspection, handover, and ongoing maintenance support services.",
                   },
                 ].map((process, index) => (
                   <motion.div
@@ -1602,7 +1830,9 @@ export default function siddhanInfraWebsite() {
                       {process.step}
                     </div>
                     <h3 className="text-xl font-bold mb-3">{process.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{process.description}</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      {process.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -1624,15 +1854,23 @@ export default function siddhanInfraWebsite() {
                   <br />
                   Construction Project?
                 </h2>
-                <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: "#b3e5fc" }}>
-                  Get in touch with our construction experts for a free consultation and project estimate.
+                <p
+                  className="text-xl mb-8 max-w-2xl mx-auto"
+                  style={{ color: "#b3e5fc" }}
+                >
+                  Get in touch with our construction experts for a free
+                  consultation and project estimate.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     className="px-8 py-3 rounded-full text-lg font-semibold"
                     style={{ backgroundColor: "white", color: "#0d93b4" }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#f5f5f5")}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = "white")}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#f5f5f5")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "white")
+                    }
                     onClick={() => setCurrentPage("contact")}
                   >
                     Get Free Quote
@@ -1642,12 +1880,12 @@ export default function siddhanInfraWebsite() {
                     className="border-white text-white hover:bg-white px-8 py-3 rounded-full text-lg font-semibold bg-transparent"
                     style={{ borderColor: "white" }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "white"
-                      e.target.style.color = "#0d93b4"
+                      e.target.style.backgroundColor = "white";
+                      e.target.style.color = "#0d93b4";
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "transparent"
-                      e.target.style.color = "white"
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "white";
                     }}
                     onClick={() => setCurrentPage("contact")}
                   >
@@ -1679,7 +1917,6 @@ export default function siddhanInfraWebsite() {
               <div className="text-center">
                 {/* Circular Badge */}
                 {/* Award Badge */}
-                
 
                 {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 animate-in fade-in-0 duration-700">
@@ -1689,8 +1926,12 @@ export default function siddhanInfraWebsite() {
 
                 {/* Description */}
                 <div className="mb-8 animate-in fade-in-0 duration-700 delay-200">
-                  <p className="text-lg text-white/90 mb-2">We specialize in transforming visions into reality.</p>
-                  <p className="text-lg text-white/90">Explore our work of innovative architectural.</p>
+                  <p className="text-lg text-white/90 mb-2">
+                    We specialize in transforming visions into reality.
+                  </p>
+                  <p className="text-lg text-white/90">
+                    Explore our work of innovative architectural.
+                  </p>
                 </div>
 
                 {/* CTA Button */}
@@ -1699,8 +1940,9 @@ export default function siddhanInfraWebsite() {
                     asChild
                     className=" bg-[#0d93b4] text-white px-8 py-3 rounded-full text-lg font-semibold group hover:scale-105 transition-all duration-200"
                   >
-                    <a href="#contact-form" 
-                    onClick={() => handlePageChange("contact")}
+                    <a
+                      href="#contact-form"
+                      onClick={() => handlePageChange("contact")}
                     >
                       Book an appointment
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1733,30 +1975,40 @@ export default function siddhanInfraWebsite() {
                     ABOUT OUR INTERIOR DESIGN DIVISION
                   </div>
                   <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                    
                     <br />
                     <span className="text-[#0d93b4]">Interior Design</span>
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    Our interior design team combines artistic vision with practical expertise to create spaces that are
-                    both beautiful and functional. From concept to completion, we handle every detail.
+                    Our interior design team combines artistic vision with
+                    practical expertise to create spaces that are both beautiful
+                    and functional. From concept to completion, we handle every
+                    detail.
                   </p>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700">150+ Interior Projects Completed</span>
+                      <span className="text-gray-700">
+                        150+ Interior Projects Completed
+                      </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700"> Interior Design from 2020</span>
+                      <span className="text-gray-700">
+                        {" "}
+                        Interior Design from 2020
+                      </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700">Sustainable & Eco-Friendly Design</span>
+                      <span className="text-gray-700">
+                        Sustainable & Eco-Friendly Design
+                      </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-[#0d93b4] rounded-full"></div>
-                      <span className="text-gray-700">3D Visualization & Virtual Tours</span>
+                      <span className="text-gray-700">
+                        3D Visualization & Virtual Tours
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -1805,8 +2057,9 @@ export default function siddhanInfraWebsite() {
                   <span className="text-[#0d93b4]">Design Solutions</span>
                 </h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  From residential homes to commercial spaces, we offer comprehensive interior design services tailored
-                  to your unique style and needs.
+                  From residential homes to commercial spaces, we offer
+                  comprehensive interior design services tailored to your unique
+                  style and needs.
                 </p>
               </motion.div>
 
@@ -1816,44 +2069,81 @@ export default function siddhanInfraWebsite() {
                     title: "Residential Design",
                     description:
                       "Transform your home into a personal sanctuary with our residential interior design expertise.",
-                    image: "https://chiedesign.in/wp-content/uploads/2022/05/Luxury-Interior-Design-Living-Room-1080x675.jpg",
-                    features: ["Living Rooms", "Bedrooms", "Kitchens", "Bathrooms"],
+                    image:
+                      "https://chiedesign.in/wp-content/uploads/2022/05/Luxury-Interior-Design-Living-Room-1080x675.jpg",
+                    features: [
+                      "Living Rooms",
+                      "Bedrooms",
+                      "Kitchens",
+                      "Bathrooms",
+                    ],
                   },
                   {
                     title: "Commercial Interiors",
                     description:
                       "Create inspiring work environments that boost productivity and reflect your brand identity.",
-                    image: "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
-                    features: ["Office Spaces", "Retail Stores", "Restaurants", "Hotels"],
+                    image:
+                      "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
+                    features: [
+                      "Office Spaces",
+                      "Retail Stores",
+                      "Restaurants",
+                      "Hotels",
+                    ],
                   },
                   {
                     title: "Space Planning",
                     description:
                       "Optimize your space layout for maximum functionality and flow with expert space planning.",
-                    image: "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
-                    features: ["Layout Design", "Traffic Flow", "Furniture Placement", "Storage Solutions"],
+                    image:
+                      "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
+                    features: [
+                      "Layout Design",
+                      "Traffic Flow",
+                      "Furniture Placement",
+                      "Storage Solutions",
+                    ],
                   },
                   {
                     title: "Color Consultation",
-                    description: "Expert color selection and coordination to create the perfect mood and atmosphere.",
-                    image: "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
-                    features: ["Color Schemes", "Paint Selection", "Accent Colors", "Mood Creation"],
+                    description:
+                      "Expert color selection and coordination to create the perfect mood and atmosphere.",
+                    image:
+                      "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
+                    features: [
+                      "Color Schemes",
+                      "Paint Selection",
+                      "Accent Colors",
+                      "Mood Creation",
+                    ],
                   },
                   {
                     title: "Furniture & Decor",
                     description:
                       "Curated furniture selection and decorative elements that complete your design vision.",
-                    image: "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
-                    features: ["Custom Furniture", "Art Selection", "Lighting Design", "Accessories"],
+                    image:
+                      "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
+                    features: [
+                      "Custom Furniture",
+                      "Art Selection",
+                      "Lighting Design",
+                      "Accessories",
+                    ],
                   },
                   {
                     title: "3D Visualization",
                     description:
                       "See your space come to life with photorealistic 3D renderings and virtual walkthroughs.",
-                    image: "https://framerusercontent.com/images/KQl9gxWQKSWL4CeS4TljSLOwE.png",
-                    features: ["3D Renderings", "Virtual Tours", "Material Samples", "Design Previews"],
+                    image:
+                      "https://framerusercontent.com/images/KQl9gxWQKSWL4CeS4TljSLOwE.png",
+                    features: [
+                      "3D Renderings",
+                      "Virtual Tours",
+                      "Material Samples",
+                      "Design Previews",
+                    ],
                   },
-                  // 
+                  //
                 ].map((service, index) => (
                   <motion.div
                     key={index}
@@ -1872,11 +2162,18 @@ export default function siddhanInfraWebsite() {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        {service.description}
+                      </p>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                          <li
+                            key={idx}
+                            className="flex items-center gap-2 text-sm text-gray-600"
+                          >
                             <div className="w-1.5 h-1.5 bg-[#0d93b4] rounded-full"></div>
                             {feature}
                           </li>
@@ -1899,7 +2196,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">FEATURED DESIGNS</div>
+                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">
+                  FEATURED DESIGNS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
                   Our Interior Design
                   <br />
@@ -1924,8 +2223,12 @@ export default function siddhanInfraWebsite() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">Modern Luxury Living Room</h3>
-                    <p className="text-gray-200 mb-2">Contemporary design with premium finishes</p>
+                    <h3 className="text-2xl font-bold mb-2">
+                      Modern Luxury Living Room
+                    </h3>
+                    <p className="text-gray-200 mb-2">
+                      Contemporary design with premium finishes
+                    </p>
                     <div className="flex items-center gap-4 text-sm">
                       <span>Milwaukee, WI</span>
                       <span>•</span>
@@ -1942,22 +2245,26 @@ export default function siddhanInfraWebsite() {
                       title: "Executive Office Suite",
                       type: "Commercial",
                       year: "2024",
-                      description: "Sophisticated workspace design for C-suite executives",
-                      image: "https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png",
+                      description:
+                        "Sophisticated workspace design for C-suite executives",
+                      image:
+                        "https://framerusercontent.com/images/MeKJAlOXXupItPDmkok7GEkRjg.png",
                     },
                     {
                       title: "Boutique Hotel Lobby",
                       type: "Hospitality",
                       year: "2023",
-                      description: "Elegant and welcoming hotel entrance design",
-                      image: "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
+                      description:
+                        "Elegant and welcoming hotel entrance design",
+                      image:
+                        "https://framerusercontent.com/images/4sU8ZcE1VPt5tOMPRWaOZKjCMk.png",
                     },
                   ].map((project, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: 50 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0, delay: index * 0}}
+                      transition={{ duration: 0, delay: index * 0 }}
                       viewport={{ once: false }}
                       className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                     >
@@ -1970,8 +2277,12 @@ export default function siddhanInfraWebsite() {
                         />
                       </div>
                       <div className="p-4">
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">{project.title}</h4>
-                        <p className="text-gray-600 text-sm mb-3">{project.description}</p>
+                        <h4 className="text-lg font-bold text-gray-900 mb-2">
+                          {project.title}
+                        </h4>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {project.description}
+                        </p>
                         <div className="flex items-center gap-4 text-xs text-gray-500">
                           <span>{project.type}</span>
                           <span>•</span>
@@ -1989,22 +2300,26 @@ export default function siddhanInfraWebsite() {
                   {
                     title: "Modern Kitchen Design",
                     category: "Residential",
-                    image: "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
+                    image:
+                      "https://framerusercontent.com/images/oTYSHLRWpijaNmpr5wrNa6JSVw.png",
                   },
                   {
                     title: "Luxury Master Bedroom",
                     category: "Residential",
-                    image: "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
+                    image:
+                      "https://framerusercontent.com/images/ZJhNDLLf6sRbkkK0RzfjqvLy94M.png",
                   },
                   {
                     title: "Contemporary Bathroom",
                     category: "Residential",
-                    image: "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
+                    image:
+                      "https://framerusercontent.com/images/2y6fIbGFbBpG5BR5EcDXaXhU.png?scale-down-to=1024",
                   },
                   {
                     title: "Restaurant Interior",
                     category: "Commercial",
-                    image: "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
+                    image:
+                      "https://framerusercontent.com/images/TvRymMb9eE6gexPti05pMO8KzfI.png",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -2063,7 +2378,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">OUR DESIGN PROCESS</div>
+                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">
+                  OUR DESIGN PROCESS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
                   How We Create
                   <br />
@@ -2076,27 +2393,32 @@ export default function siddhanInfraWebsite() {
                   {
                     step: "01",
                     title: "Discovery",
-                    description: "Understanding your lifestyle, preferences, and functional requirements.",
+                    description:
+                      "Understanding your lifestyle, preferences, and functional requirements.",
                   },
                   {
                     step: "02",
                     title: "Concept Design",
-                    description: "Creating initial design concepts and mood boards for your approval.",
+                    description:
+                      "Creating initial design concepts and mood boards for your approval.",
                   },
                   {
                     step: "03",
                     title: "3D Visualization",
-                    description: "Detailed 3D renderings to help you visualize the final design.",
+                    description:
+                      "Detailed 3D renderings to help you visualize the final design.",
                   },
                   {
                     step: "04",
                     title: "Material Selection",
-                    description: "Choosing finishes, furniture, and accessories that match your style.",
+                    description:
+                      "Choosing finishes, furniture, and accessories that match your style.",
                   },
                   {
                     step: "05",
                     title: "Implementation",
-                    description: "Project management and installation to bring your design to life.",
+                    description:
+                      "Project management and installation to bring your design to life.",
                   },
                 ].map((process, index) => (
                   <motion.div
@@ -2110,8 +2432,12 @@ export default function siddhanInfraWebsite() {
                     <div className="w-16 h-16 bg-[#0d93b4] rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                       {process.step}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{process.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      {process.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {process.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -2128,7 +2454,9 @@ export default function siddhanInfraWebsite() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">CLIENT TESTIMONIALS</div>
+                <div className="text-sm font-semibold text-[#0d93b4] mb-4 tracking-wider">
+                  CLIENT TESTIMONIALS
+                </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
                   What Our Clients
                   <br />
@@ -2149,7 +2477,7 @@ export default function siddhanInfraWebsite() {
                   {
                     name: "Pawan",
                     role: "7658925094",
-                    
+
                     quote:
                       "The workmanship is excellent — the wardrobes, modular kitchen, and false ceiling all look very premium. They also made sure the space was functional, not just beautiful. What impressed us most was their after-service support, always available for small adjustments even after project completion.",
                     rating: 5,
@@ -2179,14 +2507,23 @@ export default function siddhanInfraWebsite() {
                         className="w-16 h-16 rounded-full object-cover mr-4"
                       />
                       <div>
-                        <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                        <p className="text-[#0d93b4] text-sm">{testimonial.role}</p>
+                        <h4 className="font-semibold text-gray-900">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-[#0d93b4] text-sm">
+                          {testimonial.role}
+                        </p>
                       </div>
                     </div>
-                    <p className="text-gray-600 mb-6 italic">"{testimonial.quote}"</p>
+                    <p className="text-gray-600 mb-6 italic">
+                      "{testimonial.quote}"
+                    </p>
                     <div className="flex space-x-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-[#0d93b4] text-[#0d93b4]" />
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-[#0d93b4] text-[#0d93b4]"
+                        />
                       ))}
                     </div>
                   </motion.div>
@@ -2211,15 +2548,16 @@ export default function siddhanInfraWebsite() {
                   Your Space?
                 </h2>
                 <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                  Schedule a free consultation with our interior design experts and let's bring your vision to life.
+                  Schedule a free consultation with our interior design experts
+                  and let's bring your vision to life.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="bg-white text-[#0d93b4] hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold"
-                  onClick={() => handlePageChange("contact")}
+                  <Button
+                    className="bg-white text-[#0d93b4] hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold"
+                    onClick={() => handlePageChange("contact")}
                   >
                     Free Consultation
                   </Button>
-                  
                 </div>
               </motion.div>
             </div>
@@ -2229,115 +2567,124 @@ export default function siddhanInfraWebsite() {
 
       {/* Footer */}
       <footer className="bg-white py-12">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid md:grid-cols-4 gap-8">
-      <div className="md:col-span-2">
-        <img src="/siddhan-logo.png" alt="siddhan Infra Logo" className="h-14 mb-4" />
-        <p className="text-black-900 leading-relaxed max-w-md">
-          Transforming visions into reality through innovative infrastructure development and interior design
-          solutions.
-        </p>
-      </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <img
+                src="/siddhan-logo.png"
+                alt="siddhan Infra Logo"
+                className="h-14 mb-4"
+              />
+              <p className="text-black-900 leading-relaxed max-w-md">
+                Transforming visions into reality through innovative
+                infrastructure development and interior design solutions.
+              </p>
+            </div>
 
-      <div>
-        <h3 className="font-semibold mb-4">Services</h3>
-        <ul className="space-y-2 text-black-900">
-          <li>Infrastructure Development</li>
-          <li>Interior Design</li>
-          <li>Project Management</li>
-          <li>Sales</li>
-          <li>Consultation</li>
-        </ul>
-      </div>
+            <div>
+              <h3 className="font-semibold mb-4">Services</h3>
+              <ul className="space-y-2 text-black-900">
+                <li>Infrastructure Development</li>
+                <li>Interior Design</li>
+                <li>Project Management</li>
+                <li>Sales</li>
+                <li>Consultation</li>
+              </ul>
+            </div>
 
-      <div>
-        <h3 className="font-semibold mb-4">Contact</h3>
-        <ul className="space-y-2 text-black-900">
-          <li>
-            <a href="tel:+919494841613" className="hover:underline cursor-pointer">
-              +91 94948 41613
-            </a>
-          </li>
-          <li>
-            <a href="tel:+919908808958" className="hover:underline cursor-pointer">
-              +91 99088 08958
-            </a>
-          </li>
-          <li>
+            <div>
+              <h3 className="font-semibold mb-4">Contact</h3>
+              <ul className="space-y-2 text-black-900">
+                <li>
+                  <a
+                    href="tel:+919494841613"
+                    className="hover:underline cursor-pointer"
+                  >
+                    +91 94948 41613
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+919908808958"
+                    className="hover:underline cursor-pointer"
+                  >
+                    +91 99088 08958
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:siddhaninfrastructures682@gmail.com"
+                    className="hover:underline cursor-pointer"
+                  >
+                    siddhaninfrastructures682@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <p className="font-medium text-gray-900">Address</p>
+                  <a
+                    href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
+                      <p className="text-gray-600">
+                        Sy No.307/E/24/&307/2, T20 Arena, <br />
+                        Tagore Estates, Mithila Nagar, <br />
+                        Pragathi Nagar, Hyderabad, Medchal Malkajgiri, <br />
+                        Telangana-500090, India.
+                      </p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Social media icons */}
+          <div className="flex justify-center space-x-6 mt-8">
             <a
-              href="mailto:siddhaninfrastructures682@gmail.com"
-              className="hover:underline cursor-pointer"
-            >
-              siddhaninfrastructures682@gmail.com
-            </a>
-          </li>
-          <li>
-            <p className="font-medium text-gray-900">Address</p>
-            <a
-              href="https://maps.app.goo.gl/wqmqPbtB9grkLzELA"
+              href="https://www.facebook.com/share/1Znwccsikc/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-600"
             >
-              <div className="cursor-pointer hover:bg-gray-100 p-2 rounded-lg">
-                <p className="text-gray-600">
-                  Sy No.307/E/24/&307/2, T20 Arena, <br />
-                  Tagore Estates, Mithila Nagar, <br />
-                  Pragathi Nagar, Hyderabad, Medchal Malkajgiri, <br />
-                  Telangana-500090, India.
-                </p>
-              </div>
+              <Facebook className="w-6 h-6" />
             </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+            <a
+              href="https://www.instagram.com/siddhaninteriors?igsh=MW40M2UyNWQxazJkbg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-pink-500"
+            >
+              <Instagram className="w-6 h-6" />
+            </a>
+            <a
+              href="https://youtube.com/@siddhaninfraandinteriors?si=9XmBkPaXlO7WCdCm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-red-600"
+            >
+              <Youtube className="w-6 h-6" />
+            </a>
+          </div>
 
-    {/* Social media icons */}
-    <div className="flex justify-center space-x-6 mt-8">
-      <a
-        href="https://www.facebook.com/share/1Znwccsikc/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-blue-600"
-      >
-        <Facebook className="w-6 h-6" />
-      </a>
-      <a
-        href="https://www.instagram.com/siddhaninteriors?igsh=MW40M2UyNWQxazJkbg=="
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-pink-500"
-      >
-        <Instagram className="w-6 h-6" />
-      </a>
-      <a
-        href="https://youtube.com/@siddhaninfraandinteriors?si=9XmBkPaXlO7WCdCm"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-red-600"
-      >
-        <Youtube className="w-6 h-6" />
-      </a>
-    </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
+            <p>&copy; 2024 siddhan Infra. All rights reserved.</p>
+          </div>
 
-    <div className="border-t border-gray-800 mt-8 pt-8 text-center text-black-900">
-      <p>&copy; 2024 siddhan Infra. All rights reserved.</p>
+          {/* WhatsApp floating button */}
+          <a
+            href="https://wa.me/919494841613"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-50"
+          >
+            <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors cursor-pointer">
+              <MessageCircle className="w-7 h-7 text-white" />
+            </div>
+          </a>
+        </div>
+      </footer>
     </div>
-
-    {/* WhatsApp floating button */}
-    <a
-      href="https://wa.me/919494841613"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50"
-    >
-      <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors cursor-pointer">
-        <MessageCircle className="w-7 h-7 text-white" />
-      </div>
-    </a>
-  </div>
-</footer>
-
-    </div>
-  )
+  );
 }
