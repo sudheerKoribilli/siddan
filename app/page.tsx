@@ -1706,7 +1706,7 @@ export default function siddhanInfraWebsite() {
                       year: "2024",
                       // value: "$62M",
                       description:
-                        "G+4 luxury apartment",
+                        "Duplex luxury ",
                       image: "/WhatsApp Image 2025-08-30 at 3.12.03 PM.jpeg",
                     },
                   ].map((project, index) => (
@@ -2075,7 +2075,7 @@ export default function siddhanInfraWebsite() {
                       "Living Rooms",
                       "Bedrooms",
                       "Kitchens",
-                      "Bathrooms",
+                      "Dining Rooms",
                     ],
                   },
                   {
